@@ -1,0 +1,15 @@
+{
+  "name": "voice-assistant-desktop",
+  "version": "0.1.0",
+  "description": "Transparent HUD-style overlay client for the voice assistant",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^31.0.0"
+  },
+  "dependencies": {
+    "@nut-tree-fork/nut-js": "^4.2.6"
+  }
+}

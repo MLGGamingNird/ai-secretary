@@ -1,0 +1,626 @@
+
+[18584:0728/124951.949:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[18584:0728/124951.949:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[26964:0728/132624.958:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[26964:0728/132624.958:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[27384:0728/173157.487:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[27384:0728/173157.487:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[28468:0728/201040.943:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[28468:0728/201040.944:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[vesper] action execution failed: Error: Unknown key name: r
+    at resolveKey (D:\AI Sectretary\voice-assistant\desktop\main.js:106:19)
+    at Array.map (<anonymous>)
+    at D:\AI Sectretary\voice-assistant\desktop\main.js:117:42
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:83740)
+    at WebContents.emit (node:events:519:28)
+[vesper] action execution failed: Error: Unknown key name: escape
+    at resolveKey (D:\AI Sectretary\voice-assistant\desktop\main.js:106:19)
+    at Array.map (<anonymous>)
+    at D:\AI Sectretary\voice-assistant\desktop\main.js:117:42
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:83740)
+    at WebContents.emit (node:events:519:28)
+
+[30256:0729/120551.966:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[30256:0729/120551.966:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[vesper] action execution failed: Error: Unknown key name: escape
+    at resolveKey (D:\AI Sectretary\voice-assistant\desktop\main.js:106:19)
+    at Array.map (<anonymous>)
+    at D:\AI Sectretary\voice-assistant\desktop\main.js:117:42
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:83740)
+    at WebContents.emit (node:events:519:28)
+
+
+
+[33688:0730/014948.639:ERROR:network_service_instance_impl.cc(600)] Network service crashed, restarting service.
+[33688:0730/014948.889:ERROR:network_service_instance_impl.cc(600)] Network service crashed, restarting service.
+29/124657.958:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[30768:0729/124657.958:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[30768:0729/124657.958:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[30768:0729/124657.968:ERROR:disk_cache.cc(208)] Unable to create cache
+[30768:0729/124657.968:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[30768:0729/124657.968:ERROR:disk_cache.cc(208)] Unable to create cache
+[30768:0729/124657.968:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[30768:0729/124657.968:ERROR:disk_cache.cc(208)] Unable to create cache
+[30768:0729/124657.968:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[30768:0730/014946.803:ERROR:network_service_instance_impl.cc(600)] Network service crashed, restarting service.
+[30768:0730/014947.212:ERROR:network_service_instance_impl.cc(600)] Network service crashed, restarting service.
+[30768:0730/014947.764:ERROR:network_service_instance_impl.cc(600)] Network service crashed, restarting service.
+[30768:0730/014947.950:ERROR:network_service_instance_impl.cc(600)] Network service crashed, restarting service.
+[30768:0730/014948.112:ERROR:network_service_instance_impl.cc(600)] Network service crashed, restarting service.
+[30768:0730/014948.403:ERROR:network_service_instance_impl.cc(600)] Network service crashed, restarting service.
+[30768:0730/014948.747:ERROR:network_service_instance_impl.cc(600)] Network service crashed, restarting service.
+[30768:0730/014948.983:ERROR:network_service_instance_impl.cc(600)] Network service crashed, restarting service.
+e
+[30860:0730/001210.035:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[10872:0730/002942.102:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[10872:0730/002942.102:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[10872:0730/002942.102:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[10872:0730/002942.111:ERROR:disk_cache.cc(208)] Unable to create cache
+[10872:0730/002942.111:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[10872:0730/002942.111:ERROR:disk_cache.cc(208)] Unable to create cache
+[10872:0730/002942.111:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[10872:0730/002942.111:ERROR:disk_cache.cc(208)] Unable to create cache
+[10872:0730/002942.111:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[33200:0730/003225.724:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[33200:0730/003225.724:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[33200:0730/003225.724:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[33200:0730/003225.732:ERROR:disk_cache.cc(208)] Unable to create cache
+[33200:0730/003225.732:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[33200:0730/003225.732:ERROR:disk_cache.cc(208)] Unable to create cache
+[33200:0730/003225.732:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[33200:0730/003225.732:ERROR:disk_cache.cc(208)] Unable to create cache
+[33200:0730/003225.732:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[25920:0730/003819.489:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[25920:0730/003819.489:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[25920:0730/003819.489:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[25920:0730/003819.502:ERROR:disk_cache.cc(208)] Unable to create cache
+[25920:0730/003819.502:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[25920:0730/003819.502:ERROR:disk_cache.cc(208)] Unable to create cache
+[25920:0730/003819.502:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[25920:0730/003819.502:ERROR:disk_cache.cc(208)] Unable to create cache
+[25920:0730/003819.502:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[11644:0730/004428.995:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[11644:0730/004429.002:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[11644:0730/004429.013:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[11644:0730/004429.022:ERROR:disk_cache.cc(208)] Unable to create cache
+[11644:0730/004429.022:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[11644:0730/004429.022:ERROR:disk_cache.cc(208)] Unable to create cache
+[11644:0730/004429.022:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[11644:0730/004429.023:ERROR:disk_cache.cc(208)] Unable to create cache
+[11644:0730/004429.023:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[4672:0730/005032.457:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[4672:0730/005032.458:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[4672:0730/005032.459:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[4672:0730/005032.469:ERROR:disk_cache.cc(208)] Unable to create cache
+[4672:0730/005032.469:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[4672:0730/005032.470:ERROR:disk_cache.cc(208)] Unable to create cache
+[4672:0730/005032.470:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[4672:0730/005032.470:ERROR:disk_cache.cc(208)] Unable to create cache
+[4672:0730/005032.470:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[29020:0730/010418.317:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[29020:0730/010418.317:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[29020:0730/010418.317:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[29020:0730/010418.317:ERROR:disk_cache.cc(208)] Unable to create cache
+[29020:0730/010418.317:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[29020:0730/010418.317:ERROR:disk_cache.cc(208)] Unable to create cache
+[29020:0730/010418.317:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[29020:0730/010418.318:ERROR:disk_cache.cc(208)] Unable to create cache
+[29020:0730/010418.318:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[24780:0730/012005.044:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[24780:0730/012005.044:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[24780:0730/012005.044:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[24780:0730/012005.060:ERROR:disk_cache.cc(208)] Unable to create cache
+[24780:0730/012005.060:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[24780:0730/012005.060:ERROR:disk_cache.cc(208)] Unable to create cache
+[24780:0730/012005.060:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[24780:0730/012005.060:ERROR:disk_cache.cc(208)] Unable to create cache
+[24780:0730/012005.060:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[14232:0730/013335.907:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[14232:0730/013335.907:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[14232:0730/013335.907:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[14232:0730/013335.907:ERROR:disk_cache.cc(208)] Unable to create cache
+[14232:0730/013335.907:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[14232:0730/013335.908:ERROR:disk_cache.cc(208)] Unable to create cache
+[14232:0730/013335.908:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[14232:0730/013335.908:ERROR:disk_cache.cc(208)] Unable to create cache
+[14232:0730/013335.908:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[19872:0730/013924.325:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[19872:0730/013924.325:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[19872:0730/013924.325:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[19872:0730/013924.333:ERROR:disk_cache.cc(208)] Unable to create cache
+[19872:0730/013924.334:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[19872:0730/013924.334:ERROR:disk_cache.cc(208)] Unable to create cache
+[19872:0730/013924.334:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[19872:0730/013924.334:ERROR:disk_cache.cc(208)] Unable to create cache
+[19872:0730/013924.334:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[vesper] action execution failed: Error: Unknown key name: escape
+    at resolveKey (D:\AI Sectretary\voice-assistant\desktop\main.js:137:19)
+    at Array.map (<anonymous>)
+    at D:\AI Sectretary\voice-assistant\desktop\main.js:148:42
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:83740)
+    at WebContents.emit (node:events:519:28)
+[vesper] action execution failed: Error: Unknown key name: esc
+    at resolveKey (D:\AI Sectretary\voice-assistant\desktop\main.js:137:19)
+    at Array.map (<anonymous>)
+    at D:\AI Sectretary\voice-assistant\desktop\main.js:148:42
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:83740)
+    at WebContents.emit (node:events:519:28)
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[11692:0730/014511.998:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[11692:0730/014511.998:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[11692:0730/014512.000:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[11692:0730/014512.005:ERROR:disk_cache.cc(208)] Unable to create cache
+[11692:0730/014512.005:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[11692:0730/014512.005:ERROR:disk_cache.cc(208)] Unable to create cache
+[11692:0730/014512.005:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[11692:0730/014512.005:ERROR:disk_cache.cc(208)] Unable to create cache
+[11692:0730/014512.005:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[9980:0730/125742.737:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[9980:0730/125742.737:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[9980:0730/125742.737:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[9980:0730/125742.748:ERROR:disk_cache.cc(208)] Unable to create cache
+[9980:0730/125742.748:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[9980:0730/125742.748:ERROR:disk_cache.cc(208)] Unable to create cache
+[9980:0730/125742.748:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[9980:0730/125742.749:ERROR:disk_cache.cc(208)] Unable to create cache
+[9980:0730/125742.749:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[6576:0730/132941.274:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[6576:0730/132941.277:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[6576:0730/132941.277:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[6576:0730/132941.289:ERROR:disk_cache.cc(208)] Unable to create cache
+[6576:0730/132941.289:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[6576:0730/132941.289:ERROR:disk_cache.cc(208)] Unable to create cache
+[6576:0730/132941.290:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[6576:0730/132941.290:ERROR:disk_cache.cc(208)] Unable to create cache
+[6576:0730/132941.290:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[20368:0730/141619.995:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[20368:0730/141619.995:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[20368:0730/141619.995:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[20368:0730/141620.009:ERROR:disk_cache.cc(208)] Unable to create cache
+[20368:0730/141620.009:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[20368:0730/141620.009:ERROR:disk_cache.cc(208)] Unable to create cache
+[20368:0730/141620.009:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[20368:0730/141620.009:ERROR:disk_cache.cc(208)] Unable to create cache
+[20368:0730/141620.009:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[vesper] action execution failed: Error: Unknown key name: n
+    at resolveKey (D:\AI Sectretary\voice-assistant\desktop\main.js:162:19)
+    at Array.map (<anonymous>)
+    at D:\AI Sectretary\voice-assistant\desktop\main.js:173:42
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:83740)
+    at WebContents.emit (node:events:519:28)
+[vesper] action execution failed: Error: Unknown key name: down
+    at resolveKey (D:\AI Sectretary\voice-assistant\desktop\main.js:162:19)
+    at Array.map (<anonymous>)
+    at D:\AI Sectretary\voice-assistant\desktop\main.js:173:42
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:83740)
+    at WebContents.emit (node:events:519:28)
+[vesper] action execution failed: Error: Unknown key name: escape
+    at resolveKey (D:\AI Sectretary\voice-assistant\desktop\main.js:162:19)
+    at Array.map (<anonymous>)
+    at D:\AI Sectretary\voice-assistant\desktop\main.js:173:42
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:83740)
+    at WebContents.emit (node:events:519:28)
+[vesper] action execution failed: Error: Unknown key name: f4
+    at resolveKey (D:\AI Sectretary\voice-assistant\desktop\main.js:162:19)
+    at Array.map (<anonymous>)
+    at D:\AI Sectretary\voice-assistant\desktop\main.js:173:42
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:83740)
+    at WebContents.emit (node:events:519:28)
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[27288:0731/143313.285:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[27288:0731/143313.286:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[27288:0731/143313.288:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[27288:0731/143313.298:ERROR:disk_cache.cc(208)] Unable to create cache
+[27288:0731/143313.298:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[27288:0731/143313.298:ERROR:disk_cache.cc(208)] Unable to create cache
+[27288:0731/143313.298:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[27288:0731/143313.298:ERROR:disk_cache.cc(208)] Unable to create cache
+[27288:0731/143313.298:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+[5272:0731/144145.649:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[5272:0731/144145.649:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[21244:0801/182444.385:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[21244:0801/182444.386:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[21244:0801/182444.386:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[21244:0801/182444.390:ERROR:disk_cache.cc(208)] Unable to create cache
+[21244:0801/182444.390:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[21244:0801/182444.390:ERROR:disk_cache.cc(208)] Unable to create cache
+[21244:0801/182444.390:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[21244:0801/182444.390:ERROR:disk_cache.cc(208)] Unable to create cache
+[21244:0801/182444.390:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[21244:0801/182450.567:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[21244:0801/182450.567:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[vesper] action execution failed: Error: Unknown key name: n
+    at resolveKey (D:\AI Sectretary\voice-assistant\desktop\main.js:162:19)
+    at Array.map (<anonymous>)
+    at D:\AI Sectretary\voice-assistant\desktop\main.js:173:42
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:83740)
+    at WebContents.emit (node:events:519:28)
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+Could not register kill-switch hotkey CommandOrControl+Alt+Shift+Backspace -- another app may already be using it.
+[25348:0801/183552.365:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[25348:0801/183552.367:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[25348:0801/183552.367:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[25348:0801/183552.377:ERROR:disk_cache.cc(208)] Unable to create cache
+[25348:0801/183552.377:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[25348:0801/183552.377:ERROR:disk_cache.cc(208)] Unable to create cache
+[25348:0801/183552.377:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[25348:0801/183552.378:ERROR:disk_cache.cc(208)] Unable to create cache
+[25348:0801/183552.378:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[25348:0801/183558.559:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[25348:0801/183558.559:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[vesper] action execution failed: Error: Unknown key name: n
+    at resolveKey (D:\AI Sectretary\voice-assistant\desktop\main.js:162:19)
+    at Array.map (<anonymous>)
+    at D:\AI Sectretary\voice-assistant\desktop\main.js:173:42
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:83740)
+    at WebContents.emit (node:events:519:28)
+[vesper] action execution failed: Error: Unknown key name: n
+    at resolveKey (D:\AI Sectretary\voice-assistant\desktop\main.js:162:19)
+    at Array.map (<anonymous>)
+    at D:\AI Sectretary\voice-assistant\desktop\main.js:173:42
+    at WebContents.<anonymous> (node:electron/js2c/browser_init:2:83740)
+    at WebContents.emit (node:events:519:28)
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[8064:0802/121202.257:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[8064:0802/121202.258:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[8064:0802/121202.258:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[8064:0802/121202.267:ERROR:disk_cache.cc(208)] Unable to create cache
+[8064:0802/121202.267:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[8064:0802/121202.267:ERROR:disk_cache.cc(208)] Unable to create cache
+[8064:0802/121202.267:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[8064:0802/121202.267:ERROR:disk_cache.cc(208)] Unable to create cache
+[8064:0802/121202.268:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[1868:0802/122555.986:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[1868:0802/122555.986:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[1868:0802/122555.986:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[1868:0802/122555.986:ERROR:disk_cache.cc(208)] Unable to create cache
+[1868:0802/122555.986:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[1868:0802/122555.986:ERROR:disk_cache.cc(208)] Unable to create cache
+[1868:0802/122555.986:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[1868:0802/122555.986:ERROR:disk_cache.cc(208)] Unable to create cache
+[1868:0802/122555.986:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[18796:0802/124256.675:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[18796:0802/124256.675:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[18796:0802/124256.682:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[18796:0802/124256.694:ERROR:disk_cache.cc(208)] Unable to create cache
+[18796:0802/124256.694:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[18796:0802/124256.694:ERROR:disk_cache.cc(208)] Unable to create cache
+[18796:0802/124256.694:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[18796:0802/124256.694:ERROR:disk_cache.cc(208)] Unable to create cache
+[18796:0802/124256.694:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[8608:0802/170028.486:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[8608:0802/170028.486:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[8608:0802/170028.486:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[8608:0802/170028.486:ERROR:disk_cache.cc(208)] Unable to create cache
+[8608:0802/170028.486:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[8608:0802/170028.487:ERROR:disk_cache.cc(208)] Unable to create cache
+[8608:0802/170028.487:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[8608:0802/170028.487:ERROR:disk_cache.cc(208)] Unable to create cache
+[8608:0802/170028.487:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+
+
+
+
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[18132:0802/234309.434:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[18132:0802/234309.434:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[18132:0802/234309.436:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[18132:0802/234309.445:ERROR:disk_cache.cc(208)] Unable to create cache
+[18132:0802/234309.445:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[18132:0802/234309.445:ERROR:disk_cache.cc(208)] Unable to create cache
+[18132:0802/234309.445:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[18132:0802/234309.445:ERROR:disk_cache.cc(208)] Unable to create cache
+[18132:0802/234309.445:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[1748:0803/012636.958:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[1748:0803/012636.958:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[1748:0803/012636.958:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[1748:0803/012636.986:ERROR:disk_cache.cc(208)] Unable to create cache
+[1748:0803/012636.986:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[1748:0803/012636.986:ERROR:disk_cache.cc(208)] Unable to create cache
+[1748:0803/012636.986:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[1748:0803/012636.986:ERROR:disk_cache.cc(208)] Unable to create cache
+[1748:0803/012636.986:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[1748:0803/012643.459:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[1748:0803/012643.459:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[8628:0803/133821.251:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[8628:0803/133821.251:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[27360:0803/142817.942:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[27360:0803/142817.942:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+
+
+
+
+
+
+
+[22832:0803/233805.448:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[22832:0803/233805.450:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[4564:0804/180806.770:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[4564:0804/180806.770:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[4564:0804/180806.770:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[4564:0804/180806.770:ERROR:disk_cache.cc(208)] Unable to create cache
+[4564:0804/180806.770:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[4564:0804/180806.770:ERROR:disk_cache.cc(208)] Unable to create cache
+[4564:0804/180806.770:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[4564:0804/180806.770:ERROR:disk_cache.cc(208)] Unable to create cache
+[4564:0804/180806.770:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[10868:0804/180859.486:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[10868:0804/180859.486:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[10868:0804/180859.486:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[10868:0804/180859.493:ERROR:disk_cache.cc(208)] Unable to create cache
+[10868:0804/180859.493:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[10868:0804/180859.493:ERROR:disk_cache.cc(208)] Unable to create cache
+[10868:0804/180859.493:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[10868:0804/180859.493:ERROR:disk_cache.cc(208)] Unable to create cache
+[10868:0804/180859.493:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[5972:0804/181153.583:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[5972:0804/181153.583:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[5972:0804/181153.583:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[5972:0804/181153.591:ERROR:disk_cache.cc(208)] Unable to create cache
+[5972:0804/181153.591:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[5972:0804/181153.591:ERROR:disk_cache.cc(208)] Unable to create cache
+[5972:0804/181153.591:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[5972:0804/181153.591:ERROR:disk_cache.cc(208)] Unable to create cache
+[5972:0804/181153.591:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[15136:0804/195507.096:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[15136:0804/195507.096:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[15136:0804/195507.096:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[15136:0804/195507.100:ERROR:disk_cache.cc(208)] Unable to create cache
+[15136:0804/195507.100:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[15136:0804/195507.100:ERROR:disk_cache.cc(208)] Unable to create cache
+[15136:0804/195507.100:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[15136:0804/195507.100:ERROR:disk_cache.cc(208)] Unable to create cache
+[15136:0804/195507.100:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[18604:0804/195815.562:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[18604:0804/195815.562:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[18604:0804/195815.562:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[18604:0804/195815.565:ERROR:disk_cache.cc(208)] Unable to create cache
+[18604:0804/195815.565:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[18604:0804/195815.565:ERROR:disk_cache.cc(208)] Unable to create cache
+[18604:0804/195815.565:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[18604:0804/195815.565:ERROR:disk_cache.cc(208)] Unable to create cache
+[18604:0804/195815.565:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[3480:0804/200112.749:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[3480:0804/200112.749:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[3480:0804/200112.750:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[3480:0804/200112.752:ERROR:disk_cache.cc(208)] Unable to create cache
+[3480:0804/200112.752:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[3480:0804/200112.752:ERROR:disk_cache.cc(208)] Unable to create cache
+[3480:0804/200112.752:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[3480:0804/200112.752:ERROR:disk_cache.cc(208)] Unable to create cache
+[3480:0804/200112.752:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[21228:0804/200933.264:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[21228:0804/200933.266:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[21228:0804/200933.268:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[21228:0804/200933.277:ERROR:disk_cache.cc(208)] Unable to create cache
+[21228:0804/200933.297:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[21228:0804/200933.298:ERROR:disk_cache.cc(208)] Unable to create cache
+[21228:0804/200933.298:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[21228:0804/200933.298:ERROR:disk_cache.cc(208)] Unable to create cache
+[21228:0804/200933.298:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[23280:0804/201610.327:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[23280:0804/201610.327:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[23280:0804/201610.329:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[23280:0804/201610.343:ERROR:disk_cache.cc(208)] Unable to create cache
+[23280:0804/201610.344:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[23280:0804/201610.344:ERROR:disk_cache.cc(208)] Unable to create cache
+[23280:0804/201610.344:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[23280:0804/201610.344:ERROR:disk_cache.cc(208)] Unable to create cache
+[23280:0804/201610.344:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+Could not register global hotkey CommandOrControl+Shift+Space -- another app may already be using it.
+[20676:0804/202506.463:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[20676:0804/202506.463:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[20676:0804/202506.463:ERROR:cache_util_win.cc(20)] Unable to move the cache: Access is denied. (0x5)
+[20676:0804/202506.463:ERROR:disk_cache.cc(208)] Unable to create cache
+[20676:0804/202506.463:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[20676:0804/202506.463:ERROR:disk_cache.cc(208)] Unable to create cache
+[20676:0804/202506.463:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[20676:0804/202506.463:ERROR:disk_cache.cc(208)] Unable to create cache
+[20676:0804/202506.463:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+
+
+
+
+
+
+[11824:0805/012602.618:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[11824:0805/012602.622:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[16408:0805/144444.769:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[16408:0805/144444.769:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[14664:0805/144703.569:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[14664:0805/144703.569:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[5364:0805/145618.184:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[5364:0805/145618.185:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[21228:0805/213217.801:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[21228:0805/213217.802:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[vesper] couldn't save memory before quit: fetch failed
+
+[24184:0805/213330.158:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[24184:0805/213330.158:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[8776:0805/213501.816:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[8776:0805/213501.816:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[5660:0805/214331.829:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[5660:0805/214331.830:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[21716:0805/214648.118:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[21716:0805/214648.118:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[436:0805/230105.567:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[436:0805/230105.567:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[10840:0805/230621.694:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[10840:0805/230621.694:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[17736:0805/230808.021:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[17736:0805/230808.022:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[8172:0805/232357.608:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[8172:0805/232357.608:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[vesper] couldn't save memory before quit: timeout
+
+[5856:0805/233210.760:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[5856:0805/233210.771:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[vesper] couldn't save memory before quit: timeout
+
+[13268:0805/235004.693:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[13268:0805/235004.694:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[24640:0806/000013.124:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[24640:0806/000013.124:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[3780:0806/001612.735:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[3780:0806/001612.735:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[14960:0806/002031.674:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[14960:0806/002031.674:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[14532:0806/002117.814:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[14532:0806/002117.814:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[23760:0806/002725.997:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[23760:0806/002725.997:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[vesper] couldn't save memory before quit: timeout
+
+[25608:0807/013753.093:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[25608:0807/013753.096:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[vesper] couldn't save memory before quit: fetch failed
+
+[26928:0807/013806.589:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[26928:0807/013806.590:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[22752:0807/015724.716:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[22752:0807/015724.716:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[vesper] couldn't save memory before quit: timeout
+
+[9248:0807/020541.399:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[9248:0807/020541.400:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[vesper] couldn't save memory before quit: timeout
+
+[1676:0807/021215.443:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[1676:0807/021215.444:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[25956:0807/021834.162:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[25956:0807/021834.162:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[27308:0807/021954.991:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[27308:0807/021954.993:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[24120:0807/022241.500:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[24120:0807/022241.502:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[18108:0808/210124.543:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[18108:0808/210124.543:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+
+[21864:0809/121229.838:ERROR:CONSOLE(1)] "Request Autofill.enable failed. {"code":-32601,"message":"'Autofill.enable' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[21864:0809/121229.839:ERROR:CONSOLE(1)] "Request Autofill.setAddresses failed. {"code":-32601,"message":"'Autofill.setAddresses' wasn't found"}", source: devtools://devtools/bundled/core/protocol_client/protocol_client.js (1)
+[vesper] couldn't save memory before quit: fetch failed

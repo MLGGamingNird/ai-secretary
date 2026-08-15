@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: rgba(4, 10, 14, 0.9);
+    --cyan: #2de3ff;
+    --cyan-dim: #0f5c6e;
+    --panel-line: rgba(45, 227, 255, 0.35);
+    --text: #d8f6ff;
+  }
+  html, body {
+    margin: 0;
+    background: transparent;
+    font-family: "Rajdhani", sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    -webkit-app-region: drag;
+  }
+  #frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--panel-line);
+    box-shadow: 0 0 20px rgba(45, 227, 255, 0.15), inset 0 0 30px rgba(45, 227, 255, 0.03);
+  }
+
+  /* Corner brackets -- matching the main HUD panel's targeting-frame look. */
+  #frame::before, #frame::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--cyan);
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 2;
+  }
+  #frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  #frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+  .header {
+    -webkit-app-region: drag;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border-bottom: 1px solid var(--panel-line);
+    flex-shrink: 0;
+  }
+  .live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ff3b3b;
+    box-shadow: 0 0 6px #ff3b3b;
+    flex-shrink: 0;
+    animation: live-pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes live-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .title-wrap { display: flex; align-items: center; gap: 6px; overflow: hidden; }
+  .title {
+    font-family: "Orbitron", sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--cyan);
+    text-shadow: 0 0 6px rgba(45, 227, 255, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .controls {
+    -webkit-app-region: no-drag;
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .ctrl-btn {
+    padding: 3px 9px;
+    font-size: 10px;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(45, 227, 255, 0.05);
+    border: 1px solid var(--panel-line);
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s;
+    /* Cut corners, matching the main HUD's button style. */
+    clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 5px 100%, 0 calc(100% - 5px));
+  }
+  .ctrl-btn:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(45, 227, 255, 0.15); box-shadow: 0 0 8px rgba(45, 227, 255, 0.25); }
+  #close-btn:hover { border-color: #ff5c5c; color: #ff5c5c; background: rgba(255, 92, 92, 0.1); box-shadow: 0 0 8px rgba(255, 92, 92, 0.25); }
+  .video-area { -webkit-app-region: no-drag; flex: 1; position: relative; background: #000; padding: 6px; box-sizing: border-box; }
+  #player-el { width: 100%; height: 100%; }
+  .status-msg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    font-family: "Rajdhani", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+</style>
+</head>
+<body>
+  <div id="frame">
+    <div class="header">
+      <div class="title-wrap">
+        <div class="live-dot"></div>
+        <div class="title" id="video-title">LIVE FEED</div>
+      </div>
+      <div class="controls">
+        <button class="ctrl-btn" id="mute-btn">MUTE</button>
+        <button class="ctrl-btn" id="close-btn">✕</button>
+      </div>
+    </div>
+    <div class="video-area">
+      <div id="player-el"></div>
+      <div class="status-msg" id="status-msg" style="display: none;"></div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    let candidates = [];
+    try {
+      candidates = JSON.parse(params.get("candidates") || "[]");
+    } catch (e) {
+      candidates = [];
+    }
+
+    let currentIndex = 0;
+    let player = null;
+    let muted = false;
+
+    function showStatus(text) {
+      const el = document.getElementById("status-msg");
+      el.textContent = text;
+      el.style.display = "flex";
+    }
+    function hideStatus() {
+      document.getElementById("status-msg").style.display = "none";
+    }
+
+    function updateTitle() {
+      const current = candidates[currentIndex];
+      document.getElementById("video-title").textContent = (current?.title || "Live Feed").toUpperCase();
+    }
+
+    // YouTube's IFrame Player API (not a raw iframe) is what actually gives
+    // us a real onError event -- this is what makes automatic fallback
+    // through candidates possible at all.
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+
+    window.onYouTubeIframeAPIReady = function () {
+      if (candidates.length === 0) {
+        showStatus("No live feed found.");
+        return;
+      }
+      tryCurrentCandidate();
+    };
+
+    function tryCurrentCandidate() {
+      const current = candidates[currentIndex];
+      if (!current) {
+        showStatus("Couldn't find a live feed that would actually play, out of the results found.");
+        return;
+      }
+      updateTitle();
+      hideStatus();
+
+      if (player) {
+        player.destroy();
+        player = null;
+      }
+      player = new YT.Player("player-el", {
+        videoId: current.video_id,
+        playerVars: { autoplay: 1, mute: muted ? 1 : 0, controls: 1 },
+        events: { onError: onPlayerError },
+      });
+    }
+
+    let retriesForCurrentCandidate = 0;
+
+    function onPlayerError(event) {
+      // 100/101/150 are genuinely fatal -- this video will never embed, no
+      // point retrying it. 2/5 can be transient hiccups during a live
+      // stream's more complex startup (checking live status, buffering the
+      // live edge) even when the stream is actually fine -- immediately
+      // destroying and rebuilding the player for those was almost
+      // certainly the "weird refresh" behavior. Give those one real retry
+      // on the SAME candidate before giving up on it.
+      const FATAL_CODES = [100, 101, 150];
+      if (!FATAL_CODES.includes(event.data) && retriesForCurrentCandidate < 1) {
+        retriesForCurrentCandidate++;
+        console.warn(`[vesper] transient player error (code ${event.data}), retrying same candidate...`);
+        setTimeout(tryCurrentCandidate, 800); // brief pause before retrying -- an instant retry is likely to hit the same transient state again
+        return;
+      }
+      console.warn(`[vesper] video candidate failed (code ${event.data}), trying next...`);
+      currentIndex++;
+      retriesForCurrentCandidate = 0;
+      tryCurrentCandidate();
+    }
+
+    document.getElementById("mute-btn").addEventListener("click", () => {
+      muted = !muted;
+      document.getElementById("mute-btn").textContent = muted ? "UNMUTE" : "MUTE";
+      if (player && player.mute && player.unMute) {
+        muted ? player.mute() : player.unMute();
+      }
+    });
+
+    document.getElementById("close-btn").addEventListener("click", () => {
+      window.videoWindowAPI?.close?.();
+    });
+  </script>
+</body>
+</html>

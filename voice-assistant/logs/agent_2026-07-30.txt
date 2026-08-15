@@ -1,0 +1,23 @@
+[01:34:10] task='Open VSCode' action=key tier=safe narration='Switching to VSCode' params={'combo': ['alt', 'tab']}
+[01:36:20] task='Open VSCode' action=key tier=safe narration='Switching to VSCode' params={'combo': ['alt', 'tab']}
+[01:39:49] task='Open VSCode' action=key tier=safe narration='Closing VESPER interface first' params={'combo': ['escape']}
+[01:39:53] task='Open VSCode' action=key tier=safe narration='Closing VESPER interface' params={'combo': ['esc']}
+[01:39:57] task='Open VSCode' action=click tier=safe narration='Clicking interrupt to close VESPER interface' params={'x': 831, 'y': 309}
+[01:40:09] task='Open VSCode' action=key tier=safe narration='Switching to VSCode window' params={'combo': ['alt', 'tab']}
+[01:40:15] task='Open VSCode' action=click tier=safe narration='Closing error dialog' params={'x': 886, 'y': 416}
+[01:40:25] task='Open VSCode' action=key tier=safe narration='Switching to VSCode window' params={'combo': ['alt', 'tab']}
+[01:40:31] task='Open VSCode' action=key tier=safe narration='Switching to VSCode' params={'combo': ['alt', 'tab']}
+[12:54:20] task='Open VSCode' action=key tier=safe narration='Opening Start menu to search for Visual Studio Code' params={'combo': ['win']}
+[12:54:24] task='Open VSCode' action=type tier=safe narration='Searching for Visual Studio Code' params={'text': 'Visual Studio Code'}
+[12:54:46] task='Open VSCode' action=key tier=safe narration='Launching Visual Studio Code' params={'combo': ['enter']}
+[14:16:36] task='minimize vscode' action=key tier=safe narration='Opening window menu to minimize VSCode' params={'combo': ['alt', 'space']}
+[14:16:41] task='minimize vscode' action=key tier=safe narration='Pressing N to minimize' params={'combo': ['n']}
+[14:16:45] task='minimize vscode' action=click tier=safe narration='Clicking minimize button' params={'x': 939, 'y': 33}
+[14:16:51] task='minimize vscode' action=click tier=safe narration='Minimizing VSCode window' params={'x': 1339, 'y': 112}
+[14:17:04] task='minimize vscode' action=key tier=safe narration='Minimizing VSCode using keyboard shortcut' params={'combo': ['win', 'down']}
+[14:17:07] task='minimize vscode' action=key tier=safe narration='Opening window menu to minimize' params={'combo': ['alt', 'space']}
+[14:17:12] task='minimize vscode' action=key tier=safe narration='Closing the window menu' params={'combo': ['escape']}
+[14:17:21] task='minimize vscode' action=key tier=safe narration='Closing VSCode window' params={'combo': ['alt', 'f4']}
+[14:17:24] task='minimize vscode' action=key tier=safe narration='Opening window menu' params={'combo': ['alt', 'space']}
+[14:17:30] task='minimize vscode' action=type tier=safe narration='Pressing N to minimize' params={'text': 'n'}
+[14:17:34] task='minimize vscode' action=key tier=safe narration='Minimizing VSCode window' params={'combo': ['win', 'down']}

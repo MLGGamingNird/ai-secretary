@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+  svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* this window is purely visual -- clicks always pass through */
+  }
+  .highlight-box { fill: none; stroke: #2de3ff; stroke-width: 2; filter: drop-shadow(0 0 6px #2de3ff); }
+</style>
+</head>
+<body>
+<svg id="canvas" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>
+  const svg = document.getElementById("canvas");
+  const NS = "http://www.w3.org/2000/svg";
+
+  function el(tag, attrs) {
+    const e = document.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+    return e;
+  }
+
+  // A glowing rectangle around a region of interest -- used by Screen Help
+  // to circle whatever it's currently explaining. The coordinates now come
+  // from real OS data (accessibility tree / OCR), not a vision estimate, so
+  // this is drawn tight around the actual element -- no artificial padding
+  // needed like the old vision-based version required.
+  function drawHighlight(x, y, w, h, duration) {
+    // Screenshots come back in real physical pixels, but this window's own
+    // coordinate space is in CSS pixels -- on a display scaled above 100%
+    // (125%, 150%, etc, common on many laptops), those don't match 1:1.
+    // This division is a safe no-op at 100% scaling (divides by 1).
+    const dpi = window.devicePixelRatio || 1;
+    const cssX = x / dpi, cssY = y / dpi, cssW = w / dpi, cssH = h / dpi;
+
+    const rect = el("rect", {
+      class: "highlight-box",
+      x: cssX, y: cssY, width: cssW, height: cssH, rx: 4,
+      opacity: "0",
+    });
+    svg.appendChild(rect);
+    rect.animate([{ opacity: 0 }, { opacity: 0.9 }], { duration: 150, fill: "forwards" });
+    setTimeout(() => {
+      const fade = rect.animate([{ opacity: 0.9 }, { opacity: 0 }], { duration: 250, fill: "forwards" });
+      fade.onfinish = () => rect.remove();
+    }, duration);
+  }
+
+  if (window.overlayAPI) {
+    window.overlayAPI.onDraw((cmd) => {
+      if (cmd.type === "highlight") drawHighlight(cmd.x, cmd.y, cmd.w, cmd.h, cmd.duration || 4000);
+    });
+  }
+</script>
+</body>
+</html>

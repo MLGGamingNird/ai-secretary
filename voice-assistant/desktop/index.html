@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: rgba(4, 10, 14, 0.72);
+    --cyan: #2de3ff;
+    --cyan-dim: #0f5c6e;
+    --amber: #ffb648;
+    --panel: rgba(13, 30, 38, 0.55);
+    --panel-line: rgba(45, 227, 255, 0.35);
+    --text: #d8f6ff;
+    --text-dim: #5f8b98;
+    --anim-mult: 1; /* animation speed multiplier -- themes override this for a genuine behavioral difference, not just color */
+  }
+
+  /* Stealth/Low-Power theme -- dimmed, monochromatic slate. Driven by real
+     battery status (discharging and genuinely low), not a decorative
+     toggle. Overriding these variables cascades to every element that
+     already uses them, so no other rule needs to change. */
+  html.theme-stealth {
+    --cyan: #5b6b82;
+    --cyan-dim: #33404f;
+    --amber: #8a94a3;
+    --bg: rgba(3, 5, 8, 0.85);
+    --panel: rgba(9, 13, 18, 0.65);
+    --panel-line: rgba(91, 107, 130, 0.28);
+    --text: #a8b4c2;
+    --text-dim: #4a5566;
+    --anim-mult: 2.2; /* slower animations while in Stealth */
+  }
+
+  /* Genuinely pauses the orbital ring animations in Stealth -- unlike the
+     --anim-mult slowdown, this actually stops the GPU from recomputing
+     these every frame, a real render-cost reduction, not just a slower
+     visual. */
+  html.theme-stealth .orbital-ring-1,
+  html.theme-stealth .orbital-ring-2,
+  html.theme-stealth .orbital-ring-3 {
+    animation-play-state: paused;
+  }
+
+  html, body {
+    margin: 0;
+    background: transparent;
+    font-family: "Rajdhani", sans-serif;
+    -webkit-app-region: drag;
+    user-select: none;
+    overflow: hidden;
+  }
+
+  #hud {
+    position: relative;
+    width: 600px;
+    box-sizing: border-box;
+    padding: 18px 20px;
+    background: var(--bg);
+    backdrop-filter: blur(14px);
+    color: var(--text);
+    border: 1px solid var(--panel-line);
+    box-shadow: 0 0 24px rgba(45, 227, 255, 0.12), inset 0 0 40px rgba(45, 227, 255, 0.03);
+  }
+
+  /* HUD corner brackets -- the sci-fi "targeting frame" look */
+  #hud::before, #hud::after,
+  .corner-tl, .corner-br {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--cyan);
+    opacity: 0.85;
+  }
+  #hud::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  #hud::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+  .corner-tl { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+  .corner-br { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+
+  .topbar {
+    -webkit-app-region: no-drag;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--panel-line);
+  }
+
+  .brand {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: var(--cyan);
+    text-shadow: 0 0 8px rgba(45, 227, 255, 0.6);
+  }
+
+  .clock {
+    font-family: "Orbitron", sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--text);
+  }
+  .clock-prefix {
+    color: var(--cyan-dim);
+    font-size: 11px;
+  }
+
+  .hud-mode-buttons {
+    -webkit-app-region: no-drag;
+    display: flex;
+    justify-content: flex-end;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .mode-btn {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    font-size: 12px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--panel-line);
+    background: transparent;
+    color: var(--text-dim);
+    opacity: 0.6; /* dimmed until hovered, so it blends into the frame rather than competing for attention */
+    clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px)); /* smaller chamfer -- proportional to this button's tiny size */
+  }
+  .mode-btn.text-variant { width: auto; min-width: 30px; padding: 0 6px; font-family: "Orbitron", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.5px; }
+  .mode-btn:hover { opacity: 1; color: var(--cyan); border-color: var(--cyan); background: rgba(45, 227, 255, 0.08); }
+
+  /* Central animated core -- visual state of the assistant */
+  .core-wrap {
+    -webkit-app-region: no-drag;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+
+  #core-svg { flex-shrink: 0; }
+
+  .core-ring-outer, .core-ring-inner {
+    fill: none;
+    stroke: var(--cyan-dim);
+    stroke-width: 1;
+    opacity: 0.35;
+  }
+
+  /* Orbital core: three independently rotating rings instead of one --
+     each spins at a different speed/direction, giving a genuine "orbital"
+     layered feel rather than a single active ring. */
+  .orbital-ring {
+    fill: none;
+    stroke: var(--cyan);
+    stroke-linecap: round;
+    transform-origin: 50% 50%;
+  }
+  .orbital-ring-1 { stroke-width: 2.5; opacity: 0.9; filter: drop-shadow(0 0 4px var(--cyan)); }
+  .orbital-ring-2 { stroke-width: 2; opacity: 0.65; filter: drop-shadow(0 0 3px var(--cyan)); }
+  .orbital-ring-3 { stroke-width: 1.5; opacity: 0.45; }
+
+  .core-dot {
+    fill: var(--cyan);
+    filter: drop-shadow(0 0 5px var(--cyan));
+  }
+
+  #core-svg.state-idle .orbital-ring-1 { animation-name: spin; animation-duration: calc(10s * var(--anim-mult)); animation-timing-function: linear; animation-iteration-count: infinite; }
+  #core-svg.state-idle .orbital-ring-2 { animation-name: spin-reverse; animation-duration: calc(14s * var(--anim-mult)); animation-timing-function: linear; animation-iteration-count: infinite; }
+  #core-svg.state-idle .orbital-ring-3 { animation-name: spin; animation-duration: calc(19s * var(--anim-mult)); animation-timing-function: linear; animation-iteration-count: infinite; }
+
+  #core-svg.state-listening .orbital-ring-1 { animation-name: spin; animation-duration: calc(2s * var(--anim-mult)); animation-timing-function: linear; animation-iteration-count: infinite; stroke: var(--amber); filter: drop-shadow(0 0 6px var(--amber)); }
+  #core-svg.state-listening .orbital-ring-2 { animation-name: spin-reverse; animation-duration: calc(2.6s * var(--anim-mult)); animation-timing-function: linear; animation-iteration-count: infinite; stroke: var(--amber); filter: drop-shadow(0 0 5px var(--amber)); }
+  #core-svg.state-listening .orbital-ring-3 { animation-name: spin; animation-duration: calc(3.2s * var(--anim-mult)); animation-timing-function: linear; animation-iteration-count: infinite; stroke: var(--amber); }
+  #core-svg.state-listening .core-dot { fill: var(--amber); filter: drop-shadow(0 0 6px var(--amber)); }
+  /* No canned pulse animation here anymore -- real mic volume drives the
+     dot's size and ring glow directly via JS while actually listening. */
+
+  #core-svg.state-thinking .orbital-ring-1 { animation-name: spin; animation-duration: calc(1.1s * var(--anim-mult)); animation-timing-function: linear; animation-iteration-count: infinite; }
+  #core-svg.state-thinking .orbital-ring-2 { animation-name: spin-reverse; animation-duration: calc(1.4s * var(--anim-mult)); animation-timing-function: linear; animation-iteration-count: infinite; }
+  #core-svg.state-thinking .orbital-ring-3 { animation-name: spin; animation-duration: calc(1.7s * var(--anim-mult)); animation-timing-function: linear; animation-iteration-count: infinite; }
+
+  #core-svg.state-speaking .orbital-ring-1 { animation-name: spin; animation-duration: calc(2.4s * var(--anim-mult)); animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: reverse; }
+  #core-svg.state-speaking .orbital-ring-2 { animation-name: spin-reverse; animation-duration: calc(3s * var(--anim-mult)); animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: reverse; }
+  #core-svg.state-speaking .orbital-ring-3 { animation-name: spin; animation-duration: calc(3.6s * var(--anim-mult)); animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: reverse; }
+  #core-svg.state-speaking .core-dot { animation-name: pulse; animation-duration: calc(0.5s * var(--anim-mult)); animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+
+  #core-svg.state-error .orbital-ring-1,
+  #core-svg.state-error .orbital-ring-2,
+  #core-svg.state-error .orbital-ring-3 { stroke: #ff5c5c; filter: drop-shadow(0 0 6px #ff5c5c); animation: none; }
+  #core-svg.state-error .core-dot { fill: #ff5c5c; }
+
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes spin-reverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+  @keyframes pulse { 0%, 100% { opacity: 1; r: 5; } 50% { opacity: 0.4; r: 7; } }
+
+  .core-readout { flex: 1; }
+  #status-label {
+    font-family: "Orbitron", sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--cyan);
+    text-transform: uppercase;
+  }
+  #hotkey-hint { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
+
+  /* Vitals: real CPU/RAM gauges, not decorative */
+  .vitals {
+    -webkit-app-region: no-drag;
+    display: flex;
+    gap: 18px;
+    flex-shrink: 0;
+  }
+  .gauge { text-align: center; }
+  .gauge-ring-bg { fill: none; stroke: var(--cyan-dim); stroke-width: 4; opacity: 0.4; }
+  .gauge-ring-fill {
+    fill: none;
+    stroke: var(--cyan);
+    stroke-width: 4;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 4px var(--cyan));
+    transition: stroke-dashoffset 0.6s ease;
+  }
+  .gauge-label {
+    font-family: "Orbitron", sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+  .gauge-value {
+    font-family: "Orbitron", sans-serif;
+    font-size: 11px;
+    letter-spacing: -0.5px;
+    fill: var(--cyan);
+  }
+
+  /* Transcript / reply readout */
+  .readout {
+    -webkit-app-region: no-drag;
+    border-left: 2px solid var(--cyan-dim);
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    background: var(--panel);
+    min-height: 42px;
+    /* Subtle scanline texture -- a genuinely new detail, not redundant
+       with the panel-level backdrop-filter blur already on #hud. */
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.18) 3px,
+      rgba(0, 0, 0, 0.18) 4px
+    );
+  }
+  #transcript { font-size: 14px; color: var(--text-dim); }
+  #reply {
+    font-size: 15px;
+    color: var(--text);
+    margin-top: 4px;
+    max-height: 120px;
+    overflow-y: auto; /* scrolls instead of pushing buttons/input out of view if VESPER runs long */
+    padding-right: 6px;
+  }
+  #reply::-webkit-scrollbar { width: 3px; }
+  #reply::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 2px; }
+  #reply:empty, #transcript:empty { display: none; }
+
+  .row {
+    -webkit-app-region: no-drag;
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  /* Integrated command bar -- input and Send button joined into one
+     bordered tactical-feeling bar instead of two separate elements. */
+  .command-bar {
+    -webkit-app-region: no-drag;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    border: 1px solid var(--cyan);
+    background: rgba(0, 0, 0, 0.4);
+  }
+  .cmd-prefix {
+    color: var(--cyan);
+    padding-left: 10px;
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+  }
+  #text-input {
+    flex: 1;
+    padding: 8px 10px;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: var(--text);
+    font-family: "Rajdhani", sans-serif;
+    font-size: 14px;
+  }
+  #text-input::placeholder { color: var(--text-dim); }
+  .command-bar:focus-within { box-shadow: 0 0 10px rgba(45, 227, 255, 0.3); }
+
+  button {
+    -webkit-app-region: no-drag;
+    padding: 9px 14px;
+    border: 1px solid var(--cyan);
+    background: rgba(45, 227, 255, 0.08);
+    color: var(--cyan);
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.15s, box-shadow 0.15s;
+    /* Cut top-right and bottom-left corners for a sci-fi HUD look. */
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+  button:hover { background: rgba(45, 227, 255, 0.18); box-shadow: 0 0 12px rgba(45, 227, 255, 0.25); }
+  button:disabled { opacity: 0.4; cursor: default; }
+  #mic-btn.recording { border-color: var(--amber); color: var(--amber); background: rgba(255, 182, 72, 0.12); }
+  #interrupt-btn { border-color: #ff5c5c; color: #ff5c5c; background: rgba(255, 92, 92, 0.06); }
+  #interrupt-btn:hover { background: rgba(255, 92, 92, 0.15); }
+
+  /* Upcoming reminder/timer countdown -- lives in the default compact view
+     since it's time-sensitive info, not gated behind resizing. Hidden
+     entirely when nothing's pending. */
+  #countdown-strip {
+    display: none;
+    margin-top: 8px;
+    padding: 6px 10px;
+    border: 1px solid var(--panel-line);
+    background: var(--panel);
+    color: var(--text-dim);
+    font-family: "Orbitron", sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #countdown-strip.has-items { display: block; }
+  #countdown-strip .countdown-time { color: var(--cyan); }
+
+  /* --- Responsive layout: resizing the window reveals more, without
+     changing anything about the default compact experience. --------- */
+  #app-root {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  /* Brief glitch flicker on genuine state transitions (starting a new
+     interaction, or hitting an error) -- NOT a constant effect. Meant as
+     rare punctuation, not background noise. */
+  @keyframes glitch-flicker {
+    0% { opacity: 1; transform: translate(0); filter: none; }
+    10% { opacity: 0.7; transform: translate(-1px, 0.5px); filter: hue-rotate(8deg); }
+    20% { opacity: 1; transform: translate(1px, -0.5px); filter: hue-rotate(-6deg); }
+    30% { opacity: 0.85; transform: translate(-0.5px, 0); filter: none; }
+    40% { opacity: 1; transform: translate(0.5px, 0.5px); filter: hue-rotate(4deg); }
+    100% { opacity: 1; transform: translate(0); filter: none; }
+  }
+  #hud-outer.glitching { animation-name: glitch-flicker; animation-duration: calc(0.22s * var(--anim-mult)); animation-timing-function: steps(6, end); }
+
+</style>
+</head>
+<body>
+  <div id="app-root">
+    <div id="hud-outer">
+      <div id="hud">
+        <div class="corner-tl"></div>
+        <div class="corner-br"></div>
+
+        <div class="topbar">
+          <div class="brand">VESPER</div>
+          <div class="clock"><span class="clock-prefix">SYS.TIME //</span> <span id="clock">--:--:--</span></div>
+        </div>
+
+        <div class="core-wrap">
+          <svg id="core-svg" class="state-idle" width="64" height="64" viewBox="0 0 64 64">
+            <circle class="core-ring-outer" cx="32" cy="32" r="30" />
+        <circle class="core-ring-inner" cx="32" cy="32" r="13" />
+        <circle class="orbital-ring orbital-ring-1" cx="32" cy="32" r="29" stroke-dasharray="46 136" />
+        <circle class="orbital-ring orbital-ring-2" cx="32" cy="32" r="21" stroke-dasharray="38 94" />
+        <circle class="orbital-ring orbital-ring-3" cx="32" cy="32" r="13" stroke-dasharray="26 56" />
+        <circle class="core-dot" cx="32" cy="32" r="5" />
+      </svg>
+      <div class="core-readout">
+        <div id="status-label">IDLE</div>
+        <div id="hotkey-hint">Ctrl+Shift+Space to talk anywhere</div>
+      </div>
+
+      <div class="vitals">
+        <div class="gauge">
+          <svg width="54" height="54" viewBox="0 0 54 54">
+            <circle class="gauge-ring-bg" cx="27" cy="27" r="22" />
+            <circle id="cpu-ring" class="gauge-ring-fill" cx="27" cy="27" r="22"
+              stroke-dasharray="138" stroke-dashoffset="138" transform="rotate(-90 27 27)" />
+            <text id="cpu-value" class="gauge-value" x="27" y="31" text-anchor="middle">0%</text>
+          </svg>
+          <div class="gauge-label">CPU</div>
+        </div>
+        <div class="gauge">
+          <svg width="54" height="54" viewBox="0 0 54 54">
+            <circle class="gauge-ring-bg" cx="27" cy="27" r="22" />
+            <circle id="mem-ring" class="gauge-ring-fill" cx="27" cy="27" r="22"
+              stroke-dasharray="138" stroke-dashoffset="138" transform="rotate(-90 27 27)" />
+            <text id="mem-value" class="gauge-value" x="27" y="31" text-anchor="middle">0%</text>
+          </svg>
+          <div class="gauge-label">RAM</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="readout">
+      <div id="transcript"></div>
+      <div id="reply"></div>
+    </div>
+
+    <div class="row">
+      <button id="mic-btn">Start Talking</button>
+      <button id="interrupt-btn">Interrupt</button>
+    </div>
+
+    <div class="row">
+      <div class="command-bar">
+        <span class="cmd-prefix">&gt;</span>
+        <input id="text-input" type="text" placeholder="Type anything — a question or a screen request — and hit Enter…" />
+      </div>
+      <button id="text-send-btn">Execute</button>
+    </div>
+
+    <div class="hud-mode-buttons">
+      <button id="persona-toggle-btn" class="mode-btn text-variant" title="Persona: EV (click to switch)">EV</button>
+      <button id="theme-toggle-btn" class="mode-btn" title="Visual theme: AUTO (click to cycle)">◐</button>
+      <button id="mode-height-btn" class="mode-btn" title="Toggle height">↕</button>
+    </div>
+
+    <div id="countdown-strip"></div>
+
+    </div>
+  </div>
+  </div>
+
+  <script>
+    const statusEl = document.getElementById("status-label");
+    const coreEl = document.getElementById("core-svg");
+    const transcriptEl = document.getElementById("transcript");
+    const replyEl = document.getElementById("reply");
+    const micBtn = document.getElementById("mic-btn");
+    const interruptBtn = document.getElementById("interrupt-btn");
+    const textInput = document.getElementById("text-input");
+    const textSendBtn = document.getElementById("text-send-btn");
+    const clockEl = document.getElementById("clock");
+
+    // --- HUD height toggle. ----------------------------------------------
+    document.getElementById("mode-height-btn")?.addEventListener("click", () => {
+      window.vesperAPI?.toggleHudHeight?.();
+    });
+
+    // --- Persona toggle: reflects the real current persona (polled from
+    // the backend, so it can never drift out of sync with voice/text
+    // switches), and clicking it sends the same switch command through
+    // the normal pipeline -- so the confirmation is spoken in the new
+    // voice, exactly like switching by voice or text would be. -----------
+    let currentPersona = "ev";
+
+    async function pollPersonaStatus() {
+      try {
+        const res = await fetch(STATUS_URL);
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data.persona) {
+          currentPersona = data.persona;
+          const btn = document.getElementById("persona-toggle-btn");
+          if (btn) {
+            btn.textContent = currentPersona.toUpperCase();
+            btn.title = `Persona: ${currentPersona.toUpperCase()} (click to switch)`;
+          }
+        }
+      } catch (err) {
+        // Non-critical -- just skip this update if the brain isn't reachable.
+      }
+    }
+    pollPersonaStatus();
+    setInterval(pollPersonaStatus, 5000);
+
+    document.getElementById("persona-toggle-btn")?.addEventListener("click", async () => {
+      if (busy) return;
+      const nextPersona = currentPersona === "ev" ? "angus" : "ev";
+      await sendToBrain(`switch to ${nextPersona} mode`);
+    });
+
+    const BRAIN_URL = "http://127.0.0.1:8001/message";
+    const DUE_CHECK_URL = "http://127.0.0.1:8001/due";
+    const TRANSCRIBE_URL = "http://127.0.0.1:8001/transcribe";
+    const SPEAK_URL = "http://127.0.0.1:8001/speak";
+    const ROUTE_URL = "http://127.0.0.1:8001/route_input";
+    const APP_CONTROL_URL = "http://127.0.0.1:8001/app_control";
+    const SCREEN_HELP_URL = "http://127.0.0.1:8001/screen_help";
+    const UPCOMING_URL = "http://127.0.0.1:8001/upcoming";
+    const STATUS_URL = "http://127.0.0.1:8001/status";
+
+    let busy = false;
+    let recording = false;
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let mediaStream = null;
+    let currentAudio = null;
+    let ttsInterrupted = false;
+
+    // --- Visual state (drives the animated core + status label) ------------
+    let previousCoreState = "idle";
+    function triggerGlitch() {
+      const outer = document.getElementById("hud-outer");
+      if (!outer) return;
+      outer.classList.remove("glitching");
+      void outer.offsetWidth; // force reflow so a fast repeat still restarts the animation
+      outer.classList.add("glitching");
+    }
+
+    function setState(state, label) {
+      // Only glitch on a real transition -- starting a new interaction from
+      // idle, or hitting an actual error. Not on every micro state change
+      // (idle->listening->thinking->speaking happens constantly and would
+      // make this annoying rather than a rare, meaningful punctuation).
+      if (state === "error" || (previousCoreState === "idle" && state !== "idle")) {
+        triggerGlitch();
+      }
+      previousCoreState = state;
+      coreEl.className = `state-${state}`;
+      statusEl.textContent = label.toUpperCase();
+    }
+
+    // Live clock, purely cosmetic but keeps the HUD feeling "alive"
+    function tickClock() {
+      const now = new Date();
+      clockEl.textContent = now.toLocaleTimeString([], { hour12: false });
+    }
+    tickClock();
+    setInterval(tickClock, 1000);
+
+    // --- Vitals: real CPU/RAM usage, polled from the actual machine --------
+    const GAUGE_CIRCUMFERENCE = 138; // 2 * PI * r(22), matches the SVG above
+    function setGauge(ringEl, valueEl, percent) {
+      const clamped = Math.max(0, Math.min(100, percent));
+      ringEl.style.strokeDashoffset = GAUGE_CIRCUMFERENCE * (1 - clamped / 100);
+      valueEl.textContent = `${clamped}%`;
+    }
+
+    let statsPollCounter = 0;
+    async function pollSystemStats() {
+      // Genuinely poll less often in Stealth, not just cosmetically --
+      // skip every other cycle, halving the real IPC/CPU-sampling work.
+      statsPollCounter++;
+      const isStealthActive = document.documentElement.classList.contains("theme-stealth");
+      if (isStealthActive && statsPollCounter % 2 !== 0) return;
+
+      if (!window.vesperAPI || !window.vesperAPI.getSystemStats) return;
+      try {
+        const { cpu, mem } = await window.vesperAPI.getSystemStats();
+        setGauge(document.getElementById("cpu-ring"), document.getElementById("cpu-value"), cpu);
+        setGauge(document.getElementById("mem-ring"), document.getElementById("mem-value"), mem);
+      } catch (err) {
+        // Non-critical -- just skip this update if it fails.
+      }
+    }
+    pollSystemStats();
+    setInterval(pollSystemStats, 3000);
+
+    // --- Upcoming reminder/timer countdown -- polls the backend
+    // periodically for the real list, then ticks the displayed countdown
+    // locally every second in between polls for a smooth live number
+    // without hammering the server. -------------------------------------
+    let upcomingItems = []; // [{text, secondsRemaining, fetchedAt}]
+
+    function formatRemaining(seconds) {
+      seconds = Math.max(0, Math.round(seconds));
+      const h = Math.floor(seconds / 3600);
+      const m = Math.floor((seconds % 3600) / 60);
+      const s = seconds % 60;
+      if (h > 0) return `${h}h ${m}m`;
+      if (m > 0) return `${m}m ${s}s`;
+      return `${s}s`;
+    }
+
+    function renderCountdownStrip() {
+      const strip = document.getElementById("countdown-strip");
+      if (!strip) return;
+      if (upcomingItems.length === 0) {
+        strip.classList.remove("has-items");
+        return;
+      }
+      const now = Date.now();
+      const parts = upcomingItems.map((item) => {
+        const elapsed = (now - item.fetchedAt) / 1000;
+        const remaining = formatRemaining(item.secondsRemaining - elapsed);
+        return `${item.text} — <span class="countdown-time">${remaining}</span>`;
+      });
+      strip.innerHTML = parts.join("  •  ");
+      strip.classList.add("has-items");
+    }
+
+    async function pollUpcoming() {
+      try {
+        const res = await fetch(UPCOMING_URL);
+        if (!res.ok) return;
+        const data = await res.json();
+        const now = Date.now();
+        upcomingItems = (data.upcoming || []).map((item) => ({
+          text: item.text,
+          secondsRemaining: item.seconds_remaining,
+          fetchedAt: now,
+        }));
+        renderCountdownStrip();
+      } catch (err) {
+        // Non-critical -- just skip this update if the brain isn't reachable.
+      }
+    }
+    pollUpcoming();
+    setInterval(pollUpcoming, 15000);    // real refresh from the backend
+    setInterval(renderCountdownStrip, 1000); // smooth local tick in between
+
+    // --- Stealth/Low-Power theme: dims the whole UI automatically when
+    // your laptop is genuinely on battery and running low -- tied to real
+    // battery status, not a decorative toggle. Gracefully does nothing if
+    // this Electron version doesn't expose the Battery Status API.
+    const STEALTH_BATTERY_THRESHOLD = 0.2; // 20%
+
+    // --- Visual theme: automatic (battery-driven Stealth) plus a manual
+    // 2-way toggle -- Normal / Stealth. A manual pick overrides
+    // the automatic battery detection while active; cycling back to
+    // Normal hands control back to it. -----------------------------------
+    // Manual pick overrides the automatic battery detection while forced
+    // ON; forcing it OFF still lets genuinely low battery override that,
+    // so the automatic protection never fully disappears. -----------------
+    let manualStealthOn = false; // simple 2-state toggle, no third "auto" click-stop
+    let batteryShouldBeStealth = false;
+
+    function applyTheme() {
+      const effective = manualStealthOn || batteryShouldBeStealth;
+      document.documentElement.classList.toggle("theme-stealth", effective);
+    }
+
+    async function setupBatteryTheme() {
+      if (!navigator.getBattery) return;
+      try {
+        const battery = await navigator.getBattery();
+        function updateBatteryState() {
+          batteryShouldBeStealth = !battery.charging && battery.level <= STEALTH_BATTERY_THRESHOLD;
+          applyTheme();
+        }
+        updateBatteryState();
+        battery.addEventListener("levelchange", updateBatteryState);
+        battery.addEventListener("chargingchange", updateBatteryState);
+      } catch (err) {
+        console.warn("[vesper] battery status unavailable:", err);
+      }
+    }
+    setupBatteryTheme();
+
+    document.getElementById("theme-toggle-btn")?.addEventListener("click", () => {
+      manualStealthOn = !manualStealthOn;
+      applyTheme();
+      const label = manualStealthOn ? "STEALTH (forced)" : "NORMAL";
+      const btn = document.getElementById("theme-toggle-btn");
+      if (btn) btn.title = `Visual theme: ${label} (click to toggle)`;
+    });
+
+    // --- Recording (mic button, hotkey) -------------------------------------
+    // No browser speech-recognition here at all -- we record real audio
+    // ourselves and send it to the brain for transcription. This is what
+    // lets VESPER run fully inside the Electron app instead of needing Edge.
+    async function toggleRecording() {
+      if (busy && !recording) return; // ignore triggers while thinking/speaking
+      if (recording) {
+        stopRecording();
+      } else {
+        await startRecording();
+      }
+    }
+
+    async function startRecording() {
+      try {
+        mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      } catch (err) {
+        setState("error", "mic permission denied");
+        console.error(err);
+        return;
+      }
+
+      // Stop VESPER talking if it's mid-response when you start a new request.
+      stopSpeaking();
+      startAudioAnalysis(mediaStream);
+
+      audioChunks = [];
+      mediaRecorder = new MediaRecorder(mediaStream);
+      mediaRecorder.ondataavailable = (e) => {
+        if (e.data.size > 0) audioChunks.push(e.data);
+      };
+      mediaRecorder.onstop = async () => {
+        mediaStream.getTracks().forEach((t) => t.stop());
+        stopAudioAnalysis();
+        const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+        setState("thinking", "transcribing");
+        await sendAudioToBrain(audioBlob);
+      };
+
+      mediaRecorder.start();
+      recording = true;
+      micBtn.textContent = "Stop & Send";
+      micBtn.classList.add("recording");
+      setState("listening", "listening");
+    }
+
+    // --- Voice-reactive core: real mic volume drives the center dot's size
+    // and the outer ring's glow while actually listening, instead of a
+    // canned animation that runs the same regardless of whether you're
+    // actually talking. -------------------------------------------------
+    let audioContext = null;
+    let analyser = null;
+    let audioDataArray = null;
+    let audioAnimationFrame = null;
+
+    function startAudioAnalysis(stream) {
+      try {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const source = audioContext.createMediaStreamSource(stream);
+        analyser = audioContext.createAnalyser();
+        analyser.fftSize = 256;
+        source.connect(analyser);
+        audioDataArray = new Uint8Array(analyser.frequencyBinCount);
+        updateAudioLevel();
+      } catch (err) {
+        console.warn("[vesper] voice-reactive core unavailable:", err);
+      }
+    }
+
+    function updateAudioLevel() {
+      if (!analyser) return;
+      analyser.getByteFrequencyData(audioDataArray);
+      const avg = audioDataArray.reduce((sum, v) => sum + v, 0) / audioDataArray.length;
+      const level = Math.min(1, avg / 70); // typical speech peaks well under the theoretical max
+
+      const dot = document.querySelector(".core-dot");
+      if (dot) dot.setAttribute("r", (5 + level * 4).toFixed(1));
+
+      const ring1 = document.querySelector(".orbital-ring-1");
+      if (ring1) ring1.style.filter = `drop-shadow(0 0 ${4 + level * 10}px var(--amber))`;
+
+      audioAnimationFrame = requestAnimationFrame(updateAudioLevel);
+    }
+
+    function stopAudioAnalysis() {
+      if (audioAnimationFrame) cancelAnimationFrame(audioAnimationFrame);
+      audioAnimationFrame = null;
+      if (audioContext) {
+        audioContext.close();
+        audioContext = null;
+      }
+      analyser = null;
+
+      // Reset back to the CSS-driven defaults for other states.
+      const dot = document.querySelector(".core-dot");
+      if (dot) dot.setAttribute("r", "5");
+      const ring1 = document.querySelector(".orbital-ring-1");
+      if (ring1) ring1.style.filter = "";
+    }
+
+    function stopRecording() {
+      if (mediaRecorder && recording) {
+        mediaRecorder.stop();
+      }
+      recording = false;
+      micBtn.textContent = "Start Talking";
+      micBtn.classList.remove("recording");
+    }
+
+    async function sendAudioToBrain(audioBlob) {
+      try {
+        const formData = new FormData();
+        formData.append("audio", audioBlob, "recording.webm");
+        const res = await fetch(TRANSCRIBE_URL, { method: "POST", body: formData });
+        if (!res.ok) throw new Error(`Transcription failed: ${res.status}`);
+        const data = await res.json();
+        const text = (data.text || "").trim();
+
+        if (!text) {
+          setState("idle", "didn't catch that");
+          return;
+        }
+
+        transcriptEl.textContent = `You: ${text}`;
+        setState("thinking", "thinking");
+        await sendToBrain(text);
+      } catch (err) {
+        setState("error", "brain unreachable");
+        console.error(err);
+      }
+    }
+
+    async function sendToBrain(text) {
+      busy = true;
+      let succeeded = false;
+      try {
+        const res = await fetch(BRAIN_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text }),
+        });
+        if (!res.ok) throw new Error(`Brain returned ${res.status}`);
+        const data = await res.json();
+        replyEl.textContent = `Assistant: ${data.text}`;
+        if (data.intent === "live_feed" && data.video_candidates?.length && window.vesperAPI?.openVideoWindow) {
+          window.vesperAPI.openVideoWindow(data.video_candidates);
+        }
+        if (data.intent === "code_review" && data.code_review && window.vesperAPI?.openCodeBox) {
+          window.vesperAPI.openCodeBox(data.code_review);
+        }
+        succeeded = true;
+        await speak(data.text);
+      } catch (err) {
+        setState("error", "brain unreachable");
+        console.error("[vesper] sendToBrain failed:", err);
+      } finally {
+        busy = false;
+        if (succeeded) setState("idle", "idle"); // don't clobber an error message
+      }
+    }
+
+    // --- Speaking (ElevenLabs, falls back to browser voice) -----------------
+    // If ElevenLabs fails once (e.g. account not upgraded, 402 Payment
+    // Required), stop attempting it for the rest of this session -- every
+    // reply was otherwise paying for a doomed network round-trip before
+    // falling back, which is a real, avoidable source of delay.
+    let elevenLabsBroken = false;
+
+    async function speak(text) {
+      stopSpeaking();
+      ttsInterrupted = false;
+      setState("speaking", "speaking");
+
+      if (elevenLabsBroken) {
+        await speakWithBrowserVoice(text);
+        return;
+      }
+
+      try {
+        const res = await fetch(SPEAK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text }),
+        });
+        if (!res.ok) throw new Error(`TTS request failed: ${res.status}`);
+
+        const audioBlob = await res.blob();
+        const audioUrl = URL.createObjectURL(audioBlob);
+        currentAudio = new Audio(audioUrl);
+
+        await new Promise((resolve) => {
+          currentAudio.onended = () => { URL.revokeObjectURL(audioUrl); resolve(); };
+          currentAudio.onerror = () => { URL.revokeObjectURL(audioUrl); resolve(); };
+          currentAudio.play();
+        });
+      } catch (err) {
+        console.warn("[vesper] ElevenLabs voice failed, falling back to browser voice for the rest of this session:", err);
+        elevenLabsBroken = true;
+        await speakWithBrowserVoice(text);
+      }
+    }
+
+    function speakWithBrowserVoice(text) {
+      return new Promise((resolve) => {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.onend = resolve;
+        utterance.onerror = resolve;
+        window.speechSynthesis.speak(utterance);
+      });
+    }
+
+    function stopSpeaking() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+      }
+      window.speechSynthesis.cancel();
+      ttsInterrupted = true;
+    }
+
+    // --- Manual controls -----------------------------------------------------
+    micBtn.addEventListener("click", toggleRecording);
+    interruptBtn.addEventListener("click", () => {
+      stopSpeaking();
+      setState("idle", "idle");
+    });
+
+    // --- Unified input: type anything, hit Enter -- VESPER figures out
+    // whether it's a quick command or a screen question, instead of you
+    // having to pick the right button yourself.
+    async function submitUnified() {
+      const val = textInput.value.trim();
+      if (!val || busy) return;
+      textInput.value = "";
+
+      // Check deterministic app/window control FIRST -- real Win32 calls,
+      // no AI vision or coordinate guessing involved. If this genuinely
+      // isn't an app-control request, it reports back unmatched and we
+      // fall through to normal routing below.
+      try {
+        const appRes = await fetch(APP_CONTROL_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text: val }),
+        });
+        if (appRes.ok) {
+          const appData = await appRes.json();
+          if (appData.matched) {
+            transcriptEl.textContent = `You: ${val}`;
+            replyEl.textContent = `Assistant: ${appData.message}`;
+            setState("thinking", "thinking");
+            await speak(appData.message);
+            setState("idle", "idle");
+            return;
+          }
+        }
+      } catch (err) {
+        console.warn("[vesper] app control check failed:", err);
+      }
+
+      let route = "chat";
+      try {
+        const res = await fetch(ROUTE_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text: val }),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          route = data.route || "chat";
+        }
+      } catch (err) {
+        console.warn("[vesper] routing failed, defaulting to chat:", err);
+      }
+
+      if (route === "screen_help") {
+        await requestScreenHelp(val);
+      } else {
+        transcriptEl.textContent = `You: ${val}`;
+        setState("thinking", "thinking");
+        await sendToBrain(val);
+      }
+    }
+
+    textSendBtn.addEventListener("click", submitUnified);
+    textInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") submitUnified();
+    });
+
+    // Hook up the global hotkey, if running inside Electron (window.vesperAPI
+    // only exists there -- this is a no-op harmlessly if opened in a plain
+    // browser tab instead).
+    if (window.vesperAPI) {
+      window.vesperAPI.onToggleRecording(() => toggleRecording());
+    }
+
+    // --- Screen Help: VESPER looks at your screen and explains/points at
+    // things, but never controls the mouse or keyboard. --------------------
+    function base64ToBlob(base64, mimeType) {
+      const byteChars = atob(base64);
+      const byteNumbers = new Array(byteChars.length);
+      for (let i = 0; i < byteChars.length; i++) {
+        byteNumbers[i] = byteChars.charCodeAt(i);
+      }
+      return new Blob([new Uint8Array(byteNumbers)], { type: mimeType });
+    }
+
+    // --- Screen Help: VESPER looks at your screen and explains what's
+    // there, but never controls the mouse or keyboard. --------------------
+    async function requestScreenHelp(explicitQuestion) {
+      if (!window.vesperAPI || !window.vesperAPI.captureScreen) {
+        setState("error", "screen capture unavailable");
+        return;
+      }
+      if (busy) return;
+
+      const question = explicitQuestion !== undefined ? explicitQuestion : textInput.value.trim();
+      if (explicitQuestion === undefined) textInput.value = "";
+      transcriptEl.textContent = question ? `You: ${question}` : "You: (looking at the screen)";
+      setState("thinking", "reading screen…");
+      busy = true;
+
+      try {
+        const base64Png = await window.vesperAPI.captureScreen();
+        const imageBlob = base64ToBlob(base64Png, "image/png");
+
+        const formData = new FormData();
+        formData.append("image", imageBlob, "screenshot.png");
+        formData.append("question", question);
+
+        const res = await fetch(SCREEN_HELP_URL, { method: "POST", body: formData });
+        if (!res.ok) throw new Error(`Screen help failed: ${res.status}`);
+        const data = await res.json();
+
+        replyEl.textContent = `Assistant: ${data.text}`;
+        busy = false; // let speak() manage the "speaking" state itself
+        await speak(data.text);
+        setState("idle", "idle");
+      } catch (err) {
+        busy = false;
+        setState("error", "couldn't read screen");
+        console.error("[vesper] screen help failed:", err);
+      }
+    }
+
+    // --- Due timers/reminders -------------------------------------------------
+    setInterval(async () => {
+      try {
+        const res = await fetch(DUE_CHECK_URL);
+        const data = await res.json();
+        for (const item of data.due || []) {
+          replyEl.textContent = `Assistant: ${item}`;
+          await speak(item);
+        }
+      } catch (err) {
+        // Brain might just not be running yet -- fail quietly.
+      }
+    }, 5000);
+  </script>
+</body>
+</html>
